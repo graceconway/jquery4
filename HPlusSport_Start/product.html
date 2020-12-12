@@ -5,9 +5,10 @@
   <title>HPlus Sport</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="../jquery-3.0.0.js"></script>
+  <script src="jquery-3.0.0.js"></script>
   <script>
     $(function() {
+          // extract the query string parameters
       var paramLoc = window.location.href.indexOf("?");
       var paramStr = window.location.href.slice(paramLoc+1);
       var prodName = "";
@@ -29,6 +30,8 @@ prodID = decodeURIComponent(prodID);
 
 $("#productName").text(prodName);
 
+})
+</script>
 
 </head>
 <body>

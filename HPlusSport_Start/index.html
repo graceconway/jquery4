@@ -1,23 +1,19 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>HPlus Sport</title>
   <link rel="stylesheet" href="css/style.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="../jquery-3.0.0.js"></script>
+  <script src="jquery-3.0.0.js"></script>
   <script>
         $(function () {
-            $("products h2.product-name[data-
-            type='mineralwater']").css("background-color", "#2982D0");
-            $("products h2.product-name[data-
-            type='vitamin']").css("background-color", "#12500F");
-            $("#products h2.product-name[data-
-            type='proteinbar']").css("background-color", "#4E0F50");
+            $("#products h2.product-name[data-type='mineralwater']").css("background-color", "#2982D0");
+            $("#products h2.product-name[data-type='vitamin']").css("background-color", "#12500F");
+            $("#products h2.product-name[data-type='proteinbar']").css("background-color", "#4E0F50");
 
-
-            document.querySelector('#cbVitamins').addEventListener('change',
-            function (evt) {
+            document.querySelector('#cbVitamins').addEventListener('change',function (evt) {
                 updateProductView("vitamins", evt.target.checked);
             });
 
@@ -32,10 +28,8 @@
             });
 
             $(".product-item").each(function () {
-                var prodName =
-                encodeURIComponents($(this).children("h2").text());
-                var prodID =
-                encodeURIComponents($(this).data("prod_id"));
+                var prodName = encodeURIComponents($(this).children("h2").text());
+                var prodID = encodeURIComponents($(this).data("prod_id"));
 
                 var link = $("<a href='product.html?prodName=" +
                 prodName + "&prodID=" + prodID + "'/>");
@@ -45,7 +39,25 @@
 
         })
 
+        function updateProductView(categoryName, bVisible) {
 
+            var dataSelectorVal = "";
+            switch (categoryName) {
+              case "vitamins":
+                dataSelectorVal = "h2[data-type-'vitamins']"
+                break;
+              case "mineralwater":
+                  dataSelectorVal = "h2[data-type-'mineralwater']"
+                  break;
+              case "proteinbar":
+                    dataSelectorVal = "h2[data-type-'proteinbar']"
+                    break;
+
+            }
+
+            $(".product-item").has(dataSelectorVal).css('display', bVisible ? "" : "none");
+        }
+</script>
 
 
 </head>
